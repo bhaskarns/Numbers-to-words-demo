@@ -10,9 +10,12 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *inputValue;
+@property (strong, nonatomic) IBOutlet UILabel *outputResult;
 @end
 
 @implementation ViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +25,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)convertNumberToWords:(id)sender {
+    
+//    NSString *str=self.inputValue.text;
+//    NSLog(@"%@",str);
+//    
+//    int i=str.intValue;
+//    
+    NSNumberFormatter *formatter=[[NSNumberFormatter alloc]init];
+    [formatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+    
+    NSString *str1=[formatter stringFromNumber:[NSNumber numberWithInt:self.inputValue.text.intValue]];
+    //NSLog(@"%@",str);
+    _outputResult.text=str1;
+    
 }
 
 @end
